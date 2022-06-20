@@ -1,0 +1,127 @@
+[
+{
+	"uri": "/1-introduce/",
+	"title": "Introduction",
+	"tags": [],
+	"description": "",
+	"content": "S3 Security Practice In this lab, we practice security best practices for securing data in Amazon S3.\nTo protect your data in Amazon S3, by default, users only have access to the S3 resources they create. You can grant access to other users using one or a combination of the following access management features: AWS Identity and Access Management (IAM) to create users and manage access to their respective; Access Control Lists (ACLs) to grant user access to each object; storage policy to configure permissions for all objects in an S3 bucket and Query String Validation to grant limited-time access to others using a temporary URL. Amazon S3 also supports Audit Logs that list requests made to S3 resources so you get a complete view of the audience and the data accessed.\n"
+},
+{
+	"uri": "/2-prerequiste/2.1-launchtemplate/",
+	"title": "Launch CloudFormation Template",
+	"tags": [],
+	"description": "",
+	"content": "Launch CloudFormation Template We perform the initialization of the resources to use for the lab.\nMethod 1: Download CloudFormation template\nMethod 2: Download CloudFormation template\n  Access the interface AWS Management Console\n Find CloudFormation Select CloudFormation     In the CloudFormation interface\n Select Stack Select Create stack     In the Create stack interface\n  Select Template is ready\n  Template source, depending on how you choose the template\n  You can choose the path Amazon S3 URL: https://aws-storage-immersion-day.s3.us-west-2.amazonaws.com/sid-base-template.yaml\n  Or you can also upload files.\n     In this section\n You enter FCJ-S3-LAB for Stack name Regarding Lab Modules, you choose true for Deploy S3 Security Lab (the lab is in progress) and you can choose to add Deploy Storage Performance Lab (preparing for the next lab). Other modules choose false Select Next    Select Next   Confirm required IAM generation\n Select I acknowledge that AWS CloudFormation might create IAM resources with custom names. Select I acknowledge that AWS CloudFormation might require the following capability: CAPABILITY_AUTO_EXPAND Select Create Stack     Complete the Stack creation process\n When the status of the stack changes to CREATE_COMPLETE    "
+},
+{
+	"uri": "/",
+	"title": "S3 Security Best Practices",
+	"tags": [],
+	"description": "",
+	"content": "S3 Security Best Practices In this lab, we practice security best practices for securing data in Amazon S3.\nTo protect your data in Amazon S3, by default, users only have access to the S3 resources they create. You can grant access to other users using one or a combination of the following access management features: AWS Identity and Access Management (IAM) to create users and manage access their respective; Access Control Lists (ACLs) to grant user access to each object; storage policy to configure permissions for all objects in an S3 bucket and Query String Validation to grant limited-time access to others using a temporary URL . Amazon S3 also supports Audit Logs that list requests made to S3 resources so you get a complete view of the audience and the data accessed.\nContent  Introduction Preparation Require HTTPS Require SSE-S3 Encryption Block Public ACLs Configure S3 Block Public Access Restrict Access to a S3 VPC Endpoint Use AWS Config Rules to Detect a Public Bucket Use Amazon Access Analyzer for S3 Resource Cleanup  "
+},
+{
+	"uri": "/2-prerequiste/",
+	"title": "Preparation ",
+	"tags": [],
+	"description": "",
+	"content": "Preparation Content  Initialize CloudFormation Template Security Group Configuration Generate Access Keys EC2 Server Connection Bucket Name  "
+},
+{
+	"uri": "/2-prerequiste/2.2-securenetwork/",
+	"title": "Secure Network Access",
+	"tags": [],
+	"description": "",
+	"content": "Safe internet access Configure Security Group for the lab.\n  In the AWS Management Console interface\n Find VPC Select VPC     In the VPC interface\n Select Security Group Select SID-ssh-sg Select Actions Select Edit inbound rules     Configure Inbound rules\n Select Add rule Select Type HTTP, Source Anywhere-IPv4 Select Type SSH, Source MyIP (in case you can\u0026rsquo;t connect, you can change it to Anywhere-IPv4) Then select Save rules    Check the configured Security Group  "
+},
+{
+	"uri": "/2-prerequiste/2.3-createaccesskeys/",
+	"title": "Generate access key",
+	"tags": [],
+	"description": "",
+	"content": "Generate an access key for IAM user The access key is the permanent credential for the IAM user or the root user of the AWS account. You can use access keys to programmatically sign requests to the AWS CLI or AWS API (either directly or using the AWS SDK). An access key consists of two parts: an access key ID (e.g. AKIAIOSFODNN7EXAMPLE) and a secret access key (e.g. wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY). As the username and password, you must use both the access key ID and the secret access key together to authenticate your requests. Manage your access keys as securely as you use your username and password.\n  Access the AWS Management Console interface\n Find IAM Select IAM     In the IAM interface\n Select Users We have 2 users SID-lab-user1 and SID-lab-user2 Select user SID-lab-user1     In the SID-lab-user1 interface\n Select Security credentials Select Create access key     Generate access key successfully.\n View key details Select Download.csv file     Do the same with SID-lab-user2\n Then note down the information of the 2 keys.    "
+},
+{
+	"uri": "/3-requirehttps/",
+	"title": "Require HTTPS",
+	"tags": [],
+	"description": "",
+	"content": "Require HTTPS In this section, we need to create S3 Bucket Policy to request a connection to use HTTPS\n  First we access S3\n Select Buckets Select sid-security-xxxxxxx bucket    In the sid-security-xxxxxxx bucket interface   Select Permissions In the Bucket policy section, select Edit  Copy the following bucket policy into Bucket Policy Editor  {\r\u0026#34;Statement\u0026#34;: [\r{\r\u0026#34;Action\u0026#34;: \u0026#34;s3:*\u0026#34;,\r\u0026#34;Effect\u0026#34;: \u0026#34;Deny\u0026#34;,\r\u0026#34;Principal\u0026#34;: \u0026#34;*\u0026#34;,\r\u0026#34;Resource\u0026#34;: \u0026#34;arn:aws:s3:::BUCKET_NAME/*\u0026#34;,\r\u0026#34;Condition\u0026#34;: {\r\u0026#34;Bool\u0026#34;: {\r\u0026#34;aws:SecureTransport\u0026#34;: false\r}\r}\r}\r]\r} Replace BUCKET_NAME with the group name you copied into your text editor. Make sure you don\u0026rsquo;t remove the /* end of the group name.\nCheck Policy and select Save changes  Return to SSH interface to SID-security-instance. Run command  aws s3api head-object --key app1/file1 --endpoint-url http://s3.amazonaws.com --profile user1 --bucket ${bucket}  The command will return a 403 error because the endpoint-url is HTTP.  Continue running the following command.  aws s3api --endpoint-url https://s3.amazonaws.com --profile user1 head-object --key app1/file1 --bucket ${bucket} The command succeeds because you used s3api which uses HTTPS.\n"
+},
+{
+	"uri": "/2-prerequiste/2.4-connectec2/",
+	"title": "EC2 Connection",
+	"tags": [],
+	"description": "",
+	"content": "Connect EC2   Access the AWS Management Console interface\n Find EC2 Select EC2     In EC2 interface\n Select SID-security-instance Select Connect     In the Connect to instance interface\n Select EC2 instance Connect Select Connect    Successful connection  Run the following commands to set up the AWS CLI.  aws configure  Then use Access key and configure.  Create a credential file for use by the AWS CLI with the following command. This will allow you to easily switch between two different IAM users.  cd ~/.aws\ren credentials  Type i and press enter to enter insert mode\n Now copy and paste the updated credential file from your text editor into your vi session. It will look like the following, but with your unique Access Keys.    Press esc** then type :wq! and press enter to save and exit vi.  You will use this SSH session throughout this lab.\n"
+},
+{
+	"uri": "/4-requiresse/",
+	"title": "Require SSE-S3 Encryption",
+	"tags": [],
+	"description": "",
+	"content": "Require SSE-S3 Encryption Amazon S3 supports both server-side encryption (with 3 key management options: SSE-KMS, SSE-C, SSE-S3) and client-side encryption for data uploads. Amazon S3 provides flexible security features to prevent unauthorized users from accessing your data. You can connect to S3 resources from Amazon Virtual Private Cloud (Amazon VPC) using the VPC endpoint\nIn this section, we create S3 Bucket Policy to require encryption of data at rest.\n  Similar to the previous lab, we access AWS Management Console\n Find S3 Select S3     In the S3 interface\n Select Buckets Select sid-security-xxxxxxx bucket     In the sid-security-xxxxxxx bucket interface\n  Select Permission\n  In Bucket policy, select Edit\n    Copy bucket policy to Bucket Policy Editor  {\r\u0026#34;Statement\u0026#34;: [\r{\r\u0026#34;Effect\u0026#34;: \u0026#34;Deny\u0026#34;,\r\u0026#34;Principal\u0026#34;: \u0026#34;*\u0026#34;,\r\u0026#34;Action\u0026#34;: \u0026#34;s3:PutObject\u0026#34;,\r\u0026#34;Resource\u0026#34;: \u0026#34;arn:aws:s3:::BUCKET_NAME/*\u0026#34;,\r\u0026#34;Condition\u0026#34;: {\r\u0026#34;StringNotEquals\u0026#34;: {\r\u0026#34;s3:x-amz-server-side-encryption\u0026#34;: \u0026#34;AES256\u0026#34;\r}\r}\r}\r]\r} Replace BUCKET_NAME with the bucket name you copied into your text editor and click Save changes.  Return to the SSH interface. Run command  cd ~\recho \u0026#34;123456789abcdefg\u0026#34; \u0026gt; textfile Execute the command put an object into the bucket  aws s3api put-object --key text01 --body textfile --profile user1 --bucket ${bucket} The request will fail because the object is not encrypted.\nContinue running put object using SSE-S3 encoding  aws s3api put-object --key text01 --body textfile --server-side-encryption AES256 --profile user1 --bucket ${bucket} The command was successful because the PUT used SSE-S3.\nCheck S3 has 1 file text01  "
+},
+{
+	"uri": "/5-blockpublicacls/",
+	"title": "Block Public ACLs",
+	"tags": [],
+	"description": "",
+	"content": "Block public ACL   Same as before, go to Amazon S3\n Select Bucket Select sid-security-xxxxxxx bucket     In the sid-security-xxxxxxx bucket interface\n Select Permission Under Bucket Policy select Edit    Copy the bucket policy to Bucket Policy Editor*  {\r\u0026#34;Statement\u0026#34;: [\r{\r\u0026#34;Effect\u0026#34;: \u0026#34;Allow\u0026#34;,\r\u0026#34;Principal\u0026#34;: \u0026#34;*\u0026#34;,\r\u0026#34;Action\u0026#34;: [\r\u0026#34;s3:PutObject\u0026#34;,\r\u0026#34;s3:PutObjectAcl\u0026#34;\r],\r\u0026#34;Resource\u0026#34;: \u0026#34;arn:aws:s3:::BUCKET_NAME/*\u0026#34;,\r\u0026#34;Condition\u0026#34;: {\r\u0026#34;StringEquals\u0026#34;: {\r\u0026#34;s3:x-amz-acl\u0026#34;: \u0026#34;private\u0026#34;\r}\r}\r}\r]\r} Replace BUCKET_NAME with the bucket name you copied into your text editor and click Save changes  Go back to the SSH section and connect to SID-security-instance  aws s3api put-object --key text01 --body textfile --profile user1 --bucket ${bucket} The request will succeed because the default for an ACL object is private.\nContinue running the command  aws s3api put-object --key text01 --body textfile --acl public-read --profile user1 --bucket ${bucket} This command also succeeds, but it is not the behavior one would expect\nCurrent Group Policy allows private ACLs but does NOT DELETE anything. It is important to write policies that prevent actions, not allow them when trying to restrict actions against a group. The current group policy also allows Public access to unintentional groups because the main character is a wildcard.\n Access to S3\n Select buckets Select sid-security-xx bucket Select Permissions Select Edit Bucket policy    Replace new policy  {\r\u0026#34;Statement\u0026#34;: [\r{\r\u0026#34;Effect\u0026#34;: \u0026#34;Deny\u0026#34;,\r\u0026#34;Principal\u0026#34;: \u0026#34;*\u0026#34;,\r\u0026#34;Action\u0026#34;: [\r\u0026#34;s3:PutObject\u0026#34;,\r\u0026#34;s3:PutObjectAcl\u0026#34;\r],\r\u0026#34;Resource\u0026#34;: \u0026#34;arn:aws:s3:::BUCKET_NAME/*\u0026#34;,\r\u0026#34;Condition\u0026#34;: {\r\u0026#34;StringEquals\u0026#34;: {\r\u0026#34;s3:x-amz-acl\u0026#34;: [\r\u0026#34;public-read\u0026#34;,\r\u0026#34;public-read-write\u0026#34;,\r\u0026#34;authenticated-read\u0026#34;\r]\r}\r}\r}\r]\r}  Select Save changes  Edit the policy successfully.  Back to the SSH interface, run the following command.  aws s3api put-object --key text01 --body textfile --profile user1 --bucket ${bucket} The request will succeed because the default for an ACL object is private.\nContinue to run the following command.  aws s3api put-object --key text01 --body textfile --acl public-read --profile user1 --bucket ${bucket} The request failed because group policy now restricts the ACL from being read publicly.\n"
+},
+{
+	"uri": "/2-prerequiste/2.5-bucketname/",
+	"title": "Bucket Name",
+	"tags": [],
+	"description": "",
+	"content": "Amazon S3 Bucket Name   Access AWS Management Console\n Find S3 Select S3     In the S3 interface\n Select Buckets Select sid-security-xxxxxxx bucket     View details of the sid-security-xxxxxxx bucket interface\n Make a note of the bucket name    "
+},
+{
+	"uri": "/6-s3pba/",
+	"title": "Configuring S3 Block Public Access",
+	"tags": [],
+	"description": "",
+	"content": "Configure S3 Block Public Access With just a few selects in the S3 management console, you can apply S3 Block Public Access to any bucket in your account – both existing buckets and any buckets any new ones created in the future – while ensuring that there is no public access to any objects. S3 Block Public Access settings replace the S3 permission for public access, making it easy for account administrators to set up centralized controls to prevent changes in security configurations, no matter how the added object or how to create a storage area.\nPractice   Access to S3\n Select sid-security-xxxxxxxx     Select Permissions\n In the Bucket Policy section, select Delete    Fill in Delete and select Delete to confirm the deletion.   In the Block public access (bucket settings) section\n Select Edit     Make edits\n Select Block public access to buckets and objects granted through new access control lists (ACLs) Select Save changes    Fill in confirm and then select Confirm  After the change, we observe that Block all public access is On  Return to SSH interface  aws s3api put-object --key text01 --body textfile --profile user1 --bucket ${bucket} The request succeeds because default for an ACL object is private.\nContinue running the command  aws s3api put-object --key text01 --body textfile --acl public-read --profile user1 --bucket ${bucket} The request failed because group policy restricts the ACL from being read publicly.\n Perform access to S3\n Select Buckets Select sid-security-xxx bucket     In the exchange bucket\n Select Permissions For Block public access (bucket settings), select Edit     Make edits\n Select Block public access to buckets and objects granted through new access control lists (ACLs) Select Save changes    Fill in confirm and select Confirm  Finish editing.  "
+},
+{
+	"uri": "/7-vpcendpoint/",
+	"title": "Restrict access to S3 VPC Endpoint",
+	"tags": [],
+	"description": "",
+	"content": "Restrict access to S3 VPC Endpoint   Access AWS Management Console\n Find VPC Select VPC     In the VPC interface\n Select Enpoints Select Create endpoint     In the Create endpoint interface\n Name tag, enter S3-Endpoint Select AWS services     In services, we find S3\n Select Type Gateway    Select VPC SID-vpc, do not select Route Table  Select Create endpoint   Successfully created VPC endpoint\n Note down Endpoint ID for the next steps     Access to S3 bucket\n Select sid-security-xxx bucket     In the bucket interface\n Select Permissions Select Edit Bucket Policy.    Copy the bucket policy into the Bucket Policy Editor  {\r\u0026#34;Statement\u0026#34;: [\r{\r\u0026#34;Action\u0026#34;: \u0026#34;s3:*\u0026#34;,\r\u0026#34;Effect\u0026#34;: \u0026#34;Deny\u0026#34;,\r\u0026#34;Resource\u0026#34;: \u0026#34;arn:aws:s3:::BUCKET_NAME/*\u0026#34;,\r\u0026#34;Condition\u0026#34;: {\r\u0026#34;StringNotEquals\u0026#34;: {\r\u0026#34;aws:sourceVpce\u0026#34;: \u0026#34;VPC_ENDPOINT_ID\u0026#34;\r}\r},\r\u0026#34;Principal\u0026#34;: \u0026#34;*\u0026#34;\r}\r]\r} - Replace your **BUCKET NAME** and **VPC ENDPOINT ID**.\r Return to SSH interface  aws s3api head-object --key app1/file1 --profile user1 --bucket ${bucket}  Return to VPC endpoint interface\n Select S3 endpoint Select Actions Select Manage route tables     In the Manage route tables interface\n Select SID-routes Select Modify route tables    Successfully added route table  Return to SSH interface  aws s3api head-object --key app1/file1 --profile user1 --bucket ${bucket} "
+},
+{
+	"uri": "/8-awsconfig/",
+	"title": "Using AWS Config to Detect Public Bucket",
+	"tags": [],
+	"description": "",
+	"content": "Using AWS Config to Detect Public Bucket   Go to AWS Management Console\n Find AWS Config Select AWS Config     In the AWS Config interface\n Select Rules Select Add rules     Choose a rule type\n Select Add AWS managed rule     For AWS Managed Rules\n Find s3-bucket-public-read-prohibited Select s3-bucket-public-read-prohibited Select Next    Select Next  Check again and select Add rule   The rule has been added successfully.   Go to AWS Config interface and select Dashboard\n   Return to S3 bucket interface\n Select sid-security-xxx bucket.    In the bucket interface select Permissions  For Access control list (ACL), select Edit   In the ACL editing interface\n For Everyone (public access), select List and Read    Select I understand the effects\u0026hellip;* and select Save changes  Now we will see Permissions in state Public (Public Bucket)   Return to Config interface\n Select Rules Select s3-bucket-public-read-prohibited Observation Resource in scope is currently not available.     In the same interface, select Actions\n Select Re-evaluate    Observe the Resource in scope section appears resource.  "
+},
+{
+	"uri": "/9-accessanalyzer/",
+	"title": "Using Amazon Access Analyzer for S3",
+	"tags": [],
+	"description": "",
+	"content": "Using Amazon Access Analyzer for S3   Go to AWS Management Console\n Find IAM Select IAM     In the IAM interface\n Select Access analyzer Select Create analyzer     In the Create analyzer interface\n Select Create analyzer    Create Analyzer successfully.   In the Analyzer interface\n Select Active Select S3 bucket    Access to Access analyzer for S3 interface   In the S3 interface\n Select Bucket Select sid-security-xxx     In the bucket interface\n Select Permissions     For Access control list (ACL)\n Select Edit     In the Edit ACLs interface\n Uncheck List and Read of Everyone (public access) Select Save changes     Return to Access Analyzer interface of IAM\n Select Resolved Find S3 Select Finding ID appears.     In the Finding ID interface\n View status is in Resolved    "
+},
+{
+	"uri": "/10-cleanup/",
+	"title": "Clean up resources",
+	"tags": [],
+	"description": "",
+	"content": "Clean up resources Delete S3 bucket  Access to S3 interface Select Bucket related to the lab Select Delete bucket (note to Empty bucket before deleting) Verify the bucket to be deleted. Select Delete  Clear CloudFormation Stack  Access the interface CloudFormation Select Stack Select the stacks related to the lab. Select Delete Confirm stack deletion.  "
+},
+{
+	"uri": "/categories/",
+	"title": "Categories",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "/tags/",
+	"title": "Tags",
+	"tags": [],
+	"description": "",
+	"content": ""
+}]

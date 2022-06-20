@@ -1,0 +1,127 @@
+[
+{
+	"uri": "/vi/1-introduce/",
+	"title": "Giới thiệu",
+	"tags": [],
+	"description": "",
+	"content": "Thực hành về bảo mật S3 Trong bài lab này, chúng ta thực hành phương pháp bảo mật tốt nhất để bảo mật dữ liệu trong Amazon S3.\nĐể bảo vệ dữ liệu của bạn trong Amazon S3, theo mặc định, người dùng chỉ có quyền truy cập vào tài nguyên S3 mà họ tạo. Bạn có thể cấp quyền truy cập cho người dùng khác bằng cách sử dụng một hoặc kết hợp các tính năng quản lý truy cập sau: AWS Identity and Access Management (IAM) để tạo người dùng và quản lý quyền truy cập tương ứng của họ; Danh sách kiểm soát truy cập (ACL) để cấp phép cho người dùng truy cập vào từng đối tượng; chính sách vùng lưu trữ để định cấu hình quyền cho tất cả đối tượng trong một vùng lưu trữ S3 và Xác thực chuỗi ký tự truy vấn để cấp quyền truy cập trong thời gian giới hạn cho người khác bằng URL tạm thời. Amazon S3 cũng hỗ trợ Nhật ký kiểm tra liệt kê các yêu cầu được tạo đối với tài nguyên S3 để bạn có được cái nhìn toàn diện về đối tượng truy cập và dữ liệu được truy cập.\n"
+},
+{
+	"uri": "/vi/2-prerequiste/2.1-launchtemplate/",
+	"title": "Khởi tạo CloudFormation Template",
+	"tags": [],
+	"description": "",
+	"content": "Khởi tạo CloudFormation Template Chúng ta thực hiện khởi tạo các tài nguyên để sử dụng cho bài lab.\nCách 1: Tải CloudFormation template\nCách 2: Tải CloudFormation template\n  Truy cập vào giao diện AWS Management Console\n Tìm CloudFormation Chọn CloudFormation     Trong giao diện CloudFormation\n Chọn Stack Chọn Create stack     Trong giao diện Create stack\n  Chọn Template is ready\n  Template source, tùy theo cách template về mà bạn chọn\n  Bạn có thể chọn đường dẫn Amazon S3 URL: https://aws-storage-immersion-day.s3.us-west-2.amazonaws.com/sid-base-template.yaml\n  Hoặc cũng có thể upload file.\n     Trong phần này\n Bạn nhập FCJ-S3-LAB đối với Stack name Về phần Lab Modules, bạn chọn true đối với Deploy S3 Security Lab (bài lab đang thực hiện) và có thể chọn thêm Deploy Storage Performance Lab(chuẩn bị cho lab tiếp theo). Các module khác chọn false Chọn Next    Chọn Next   Xác nhận tạo IAM cần thiết\n Chọn I acknowledge that AWS CloudFormation might create IAM resources with custom names. Chọn I acknowledge that AWS CloudFormation might require the following capability: CAPABILITY_AUTO_EXPAND Chọn Create Stack     Hoàn thành quá trình tạo Stack\n Khi các status của các stack chuyển sang CREATE_COMPLETE    "
+},
+{
+	"uri": "/vi/",
+	"title": "Thực hành về Bảo mật S3",
+	"tags": [],
+	"description": "",
+	"content": "Thực hành về bảo mật S3 Trong bài lab này, chúng ta thực hành phương pháp bảo mật tốt nhất để bảo mật dữ liệu trong Amazon S3.\nĐể bảo vệ dữ liệu của bạn trong Amazon S3, theo mặc định, người dùng chỉ có quyền truy cập vào tài nguyên S3 mà họ tạo. Bạn có thể cấp quyền truy cập cho người dùng khác bằng cách sử dụng một hoặc kết hợp các tính năng quản lý truy cập sau: AWS Identity and Access Management (IAM) để tạo người dùng và quản lý quyền truy cập tương ứng của họ; Danh sách kiểm soát truy cập (ACL) để cấp phép cho người dùng truy cập vào từng đối tượng; chính sách vùng lưu trữ để định cấu hình quyền cho tất cả đối tượng trong một vùng lưu trữ S3 và Xác thực chuỗi ký tự truy vấn để cấp quyền truy cập trong thời gian giới hạn cho người khác bằng URL tạm thời. Amazon S3 cũng hỗ trợ Nhật ký kiểm tra liệt kê các yêu cầu được tạo đối với tài nguyên S3 để bạn có được cái nhìn toàn diện về đối tượng truy cập và dữ liệu được truy cập.\nNội dung  Giới thiệu Chuẩn bị Require HTTPS Require SSE-S3 Encryption Block Public ACLs Configure S3 Block Public Access Restrict Access to a S3 VPC Endpoint Use AWS Config Rules to Detect a Public Bucket Use Amazon Access Analyzer for S3 Dọn dẹp tài nguyên  "
+},
+{
+	"uri": "/vi/2-prerequiste/",
+	"title": "Các bước chuẩn bị",
+	"tags": [],
+	"description": "",
+	"content": "Các bước chuẩn bị Nội dung  Khởi tạo CloudFormation Template Cấu hình Security Group Tạo Khoá truy cập Kết nối máy chủ EC2 Bucket Name  "
+},
+{
+	"uri": "/vi/2-prerequiste/2.2-securenetwork/",
+	"title": "Truy cập mạng an toàn",
+	"tags": [],
+	"description": "",
+	"content": "Truy cập mạng an toàn Thực hiện cấu hình Security Group cho bài lab.\n  Trong giao diện AWS Management Console\n Tìm VPC Chọn VPC     Trong giao diện VPC\n Chọn Security Group Chọn SID-ssh-sg Chọn Actions Chọn Edit inbound rules     Thực hiện cấun hình Inbound rules\n Chọn Add rule Chọn Type HTTP, Source Anywhere-IPv4 Chọn Type SSH, Source MyIP (trường hợp không kết nối được bạn có thể thay đổi về Anywhere-IPv4) Sau đó chọn Save rules    Kiểm tra Security Group đã cấu hình  "
+},
+{
+	"uri": "/vi/2-prerequiste/2.3-createaccesskeys/",
+	"title": "Tạo khóa truy cập",
+	"tags": [],
+	"description": "",
+	"content": "Tạo khóa truy cập cho người dùng IAM Khóa truy cập là thông tin xác thực dài hạn cho người dùng IAM hoặc người dùng gốc tài khoản AWS. Bạn có thể sử dụng các khóa truy cập để ký các yêu cầu có lập trình tới AWS CLI hoặc AWS API (trực tiếp hoặc sử dụng AWS SDK). Khóa truy cập bao gồm hai phần: ID khóa truy cập (ví dụ: AKIAIOSFODNN7EXAMPLE) và khóa truy cập bí mật (ví dụ: wJalrXUtnFEMI / K7MDENG / bPxRfiCYEXAMPLEKEY). Giống như tên người dùng và mật khẩu, bạn phải sử dụng cả ID khóa truy cập và khóa truy cập bí mật cùng nhau để xác thực các yêu cầu của mình. Quản lý khóa truy cập của bạn một cách an toàn như khi bạn sử dụng tên người dùng và mật khẩu của mình.\n  Truy cập giao diên AWS Management Console\n Tìm IAM Chọn IAM     Trong giao diện IAM\n Chọn Users Chúng ta có 2 user SID-lab-user1 và SID-lab-user2 Chọn user SID-lab-user1     Trong giao diện SID-lab-user1\n Chọn Security credentials Chọn Create access key     Tạo access key thành công.\n Xem chi tiết key Chọn Download.csv file     Thực hiện tương tự với SID-lab-user2\n Sau đó ghi chú lại thông tin của 2 key.    "
+},
+{
+	"uri": "/vi/3-requirehttps/",
+	"title": "Yêu cầu HTTPS",
+	"tags": [],
+	"description": "",
+	"content": "Yêu cầu HTTPS Trong phần này, chúng ta cần tạo S3 Bucket Policy để yêu cầu kết nối để sử dụng HTTPS\n  Đầu tiên chúng ta truy cập vào S3\n Chọn Buckets Chọn sid-security-xxxxxxx bucket    Trong giao diện sid-security-xxxxxxx bucket   Chọn Permissions Phần Bucket policy, chọn Edit  Thực hiện copy đoạn bucket policy sau vào Bucket Policy Editor  {\r\u0026#34;Statement\u0026#34;: [\r{\r\u0026#34;Action\u0026#34;: \u0026#34;s3:*\u0026#34;,\r\u0026#34;Effect\u0026#34;: \u0026#34;Deny\u0026#34;,\r\u0026#34;Principal\u0026#34;: \u0026#34;*\u0026#34;,\r\u0026#34;Resource\u0026#34;: \u0026#34;arn:aws:s3:::BUCKET_NAME/*\u0026#34;,\r\u0026#34;Condition\u0026#34;: {\r\u0026#34;Bool\u0026#34;: {\r\u0026#34;aws:SecureTransport\u0026#34;: false\r}\r}\r}\r]\r} Thay thế BUCKET_NAMEbằng tên nhóm mà bạn đã sao chép vào trình soạn thảo văn bản của mình. Đảm bảo rằng bạn không xóa /*phần cuối của tên nhóm.\nKiểm tra lại Policy và chọn Save changes  Quay lại giao diện SSH vào SID-security-instance. Chạy lệnh  aws s3api head-object --key app1/file1 --endpoint-url http://s3.amazonaws.com --profile user1 --bucket ${bucket}  Lệnh sẽ trả về lỗi 403 vì endpoint-url là HTTP.  Tiếp tục chạy lệnh sau.  aws s3api --endpoint-url https://s3.amazonaws.com --profile user1 head-object --key app1/file1 --bucket ${bucket} Lệnh thành công vì bạn đã sử dụng s3api sử dụng HTTPS.\n"
+},
+{
+	"uri": "/vi/2-prerequiste/2.4-connectec2/",
+	"title": "Kết nối EC2",
+	"tags": [],
+	"description": "",
+	"content": "Kết nối EC2   Truy cập giao diện AWS Management Console\n Tìm EC2 Chọn EC2     Trong giao diện EC2\n Chọn SID-security-instance Chọn Connect     Trong giao diện Connect to instance\n Chọn EC2 instance Connect Chọn Connect    Kết nối thành công  Chạy các lệnh sau để thiết lập AWS CLI.  aws configure  Sau đó sử dụng Access key và cấu hình.  Tạo tệp thông tin xác thực để AWS CLI sử dụng bằng lệnh sau. Điều này sẽ cho phép bạn dễ dàng chuyển đổi giữa hai người dùng IAM khác nhau.  cd ~/.aws\rvi credentials  Nhập ivà nhấn enter để chuyển sang chế độ insert\n Bây giờ sao chép và dán tệp thông tin xác thực được cập nhật từ trình soạn thảo văn bản của bạn vào phiên vi của bạn. Nó sẽ giống như sau, nhưng với các Khóa truy cập duy nhất của bạn.    Nhấn esc** rồi gõ **:wq!**và nhấn enter để lưu và thoát khỏi vi .  Bạn sẽ sử dụng phiên SSH này trong suốt lab này.\n"
+},
+{
+	"uri": "/vi/4-requiresse/",
+	"title": "Yêu cầu mã hóa SSE-S3",
+	"tags": [],
+	"description": "",
+	"content": "Yêu cầu mã hóa SSE-S3 Amazon S3 hỗ trợ cả mã hóa phía máy chủ (với 3 tùy chọn quản lý khóa: SSE-KMS, SSE-C, SSE-S3) và mã hóa phía máy khách để tải dữ liệu lên. Amazon S3 cung cấp các tính năng bảo mật linh hoạt để ngăn không cho người dùng trái phép truy cập dữ liệu của bạn. Bạn có thể kết nối với tài nguyên S3 từ Amazon Virtual Private Cloud (Amazon VPC) bằng cách sử dụng điểm cuối VPC\nTrong phần này, chúng ta tạo S3 Bucket Policy để yêu cầu mã hóa dữ liệu ở trạng thái nghỉ.\n  Tương tự ở lab trước, chúng ta truy cập vào AWS Management Console\n Tìm S3 Chọn S3     Trong giao diện S3\n Chọn Buckets Chọn sid-security-xxxxxxx bucket     Trong giao diện sid-security-xxxxxxx bucket\n  Chọn Permission\n  Trong Bucket policy, chọn Edit\n    Sao chép bucket policy vào Bucket Policy Editor  {\r\u0026#34;Statement\u0026#34;: [\r{\r\u0026#34;Effect\u0026#34;: \u0026#34;Deny\u0026#34;,\r\u0026#34;Principal\u0026#34;: \u0026#34;*\u0026#34;,\r\u0026#34;Action\u0026#34;: \u0026#34;s3:PutObject\u0026#34;,\r\u0026#34;Resource\u0026#34;: \u0026#34;arn:aws:s3:::BUCKET_NAME/*\u0026#34;,\r\u0026#34;Condition\u0026#34;: {\r\u0026#34;StringNotEquals\u0026#34;: {\r\u0026#34;s3:x-amz-server-side-encryption\u0026#34;: \u0026#34;AES256\u0026#34;\r}\r}\r}\r]\r} Thay thế BUCKET_NAME bằng tên bucket mà bạn đã sao chép vào trình soạn thảo văn bản của mình và nhấp vào Save changes.  Quay trở lại giao diện SSH. Chạy lệnh  cd ~ echo \u0026#34;123456789abcdefg\u0026#34; \u0026gt; textfile Thực hiện chạy lệnh put an object vào bucket  aws s3api put-object --key text01 --body textfile --profile user1 --bucket ${bucket} Yêu cầu sẽ không thành công, vì object không được mã hóa.\nTiếp tục chạy lệnh put object sử dụng mã hóa SSE-S3  aws s3api put-object --key text01 --body textfile --server-side-encryption AES256 --profile user1 --bucket ${bucket} Lệnh thành công vì PUT đã sử dụng SSE-S3.\nKiểm tra S3 có 1 file text01  "
+},
+{
+	"uri": "/vi/5-blockpublicacls/",
+	"title": "Block Public ACLs",
+	"tags": [],
+	"description": "",
+	"content": "Chặn ACL công khai   Giống phần trước, truy cập Amazon S3\n Chọn Bucket Chọn sid-security-xxxxxxx bucket     Trong giao diện sid-security-xxxxxxx bucket\n Chọn Permission Dưới Bucket Policy chọn Edit    Sao chép bucket policy vào Bucket Policy Editor*  {\r\u0026#34;Statement\u0026#34;: [\r{\r\u0026#34;Effect\u0026#34;: \u0026#34;Allow\u0026#34;,\r\u0026#34;Principal\u0026#34;: \u0026#34;*\u0026#34;,\r\u0026#34;Action\u0026#34;: [\r\u0026#34;s3:PutObject\u0026#34;,\r\u0026#34;s3:PutObjectAcl\u0026#34;\r],\r\u0026#34;Resource\u0026#34;: \u0026#34;arn:aws:s3:::BUCKET_NAME/*\u0026#34;,\r\u0026#34;Condition\u0026#34;: {\r\u0026#34;StringEquals\u0026#34;: {\r\u0026#34;s3:x-amz-acl\u0026#34;: \u0026#34;private\u0026#34;\r}\r}\r}\r]\r} Thay thế BUCKET_NAME bằng bucket name mà bạn đã sao chép vào trình soạn thảo văn bản của bạn và nhấp vào Save changes  Quay lại SSH section kết nối với SID-security-instance  aws s3api put-object --key text01 --body textfile --profile user1 --bucket ${bucket} Yêu cầu sẽ thành công vì mặc định cho một đối tượng ACL là riêng tư.\nTiếp tục chạy lệnh  aws s3api put-object --key text01 --body textfile --acl public-read --profile user1 --bucket ${bucket} Lệnh này cũng thành công, nhưng nó không phải là hành vi mà người ta mong đợi\nChính sách nhóm hiện tại cho phép các ACL riêng tư nhưng không TỪ CHỐI bất cứ điều gì. Điều quan trọng là viết các chính sách ngăn chặn các hành động, không cho phép nó khi cố gắng hạn chế các hành động chống lại một nhóm. Chính sách nhóm hiện tại cũng cho phép Công khai truy cập vào nhóm không chủ ý do ký tự chính là ký tự đại diện.\n Truy cập vào S3\n Chọn buckets Chọn sid-security-xx bucket Chọn Permissions Chọn Edit Bucket policy    Thay thế policy mới  {\r\u0026#34;Statement\u0026#34;: [\r{\r\u0026#34;Effect\u0026#34;: \u0026#34;Deny\u0026#34;,\r\u0026#34;Principal\u0026#34;: \u0026#34;*\u0026#34;,\r\u0026#34;Action\u0026#34;: [\r\u0026#34;s3:PutObject\u0026#34;,\r\u0026#34;s3:PutObjectAcl\u0026#34;\r],\r\u0026#34;Resource\u0026#34;: \u0026#34;arn:aws:s3:::BUCKET_NAME/*\u0026#34;,\r\u0026#34;Condition\u0026#34;: {\r\u0026#34;StringEquals\u0026#34;: {\r\u0026#34;s3:x-amz-acl\u0026#34;: [\r\u0026#34;public-read\u0026#34;,\r\u0026#34;public-read-write\u0026#34;,\r\u0026#34;authenticated-read\u0026#34;\r]\r}\r}\r}\r]\r}  Chọn Save changes  Chỉnh sửa policy thành công.  Quay lại giao diện SSH, chạy lệnh sau.  aws s3api put-object --key text01 --body textfile --profile user1 --bucket ${bucket} Yêu cầu sẽ thành công vì mặc định cho một đối tượng ACL là riêng tư.\nTiếp tục chạy lệnh sau.  aws s3api put-object --key text01 --body textfile --acl public-read --profile user1 --bucket ${bucket} Yêu cầu không thành công vì chính sách nhóm hiện hạn chế ACL đọc công khai.\n"
+},
+{
+	"uri": "/vi/2-prerequiste/2.5-bucketname/",
+	"title": "Tên Bucket",
+	"tags": [],
+	"description": "",
+	"content": "Amazon S3 Bucket Name   Truy cập AWS Management Console\n Tìm S3 Chọn S3     Trong giao diện S3\n Chọn Buckets Chọn sid-security-xxxxxxx bucket     Xem chi tiết giao diện sid-security-xxxxxxx bucket\n Ghi chú lại tên bucket    "
+},
+{
+	"uri": "/vi/6-s3pba/",
+	"title": "Định cấu hình S3 Block Public Access",
+	"tags": [],
+	"description": "",
+	"content": "Định cấu hình S3 Block Public Access Chỉ cần một vài lần chọn trong bảng điều khiển quản lý S3, bạn có thể áp dụng S3 Block Public Access cho mọi vùng lưu trữ trong tài khoản của mình – cả vùng lưu trữ hiện có và bất kỳ vùng lưu trữ mới nào được tạo trong tương lai – đồng thời đảm bảo rằng không có quyền truy cập công cộng vào bất kỳ đối tượng nào. Các cài đặt S3 Block Public Access thay thế quyền S3 cho phép truy cập công cộng, giúp quản trị viên tài khoản dễ dàng thiết lập hoạt động kiểm soát tập trung để ngăn chặn sự thay đổi trong cấu hình bảo mật, bất kể cách thêm đối tượng hay cách tạo vùng lưu trữ.\nThực hành   Truy cập vào S3\n Chọn sid-security-xxxxxxxx     Chọn Permissions\n Phần Bucket Policy, chọn Delete    Thực hiện điền Delete và chọn Delete để xác nhận xoá.   Trong phần Block public access (bucket settings)\n Chọn Edit     Thực hiện chỉnh sửa\n Chọn Block public access to buckets and objects granted through new access control lists (ACLs) Chọn Save changes    Điền confirm và sau đó chọn Confirm  Sau khi thay đổi, chúng ta quan sát thấy Block all public access đã On  Quay lại giao diện SSH  aws s3api put-object --key text01 --body textfile --profile user1 --bucket ${bucket} Yêu cầu thành công vì deafult cho một đối tượng ACL là riêng tư.\nTiếp tục chạy lệnh  aws s3api put-object --key text01 --body textfile --acl public-read --profile user1 --bucket ${bucket} Yêu cầu không thành công vì chính sách nhóm hạn chế ACL đọc công khai.\n Thực hiện truy cập vào S3\n Chọn Buckets Chọn sid-security-xxx bucket     Trong giao diệm bucket\n Chọn Permissions Đối với Block public access (bucket settings), chọn Edit     Thực hiện chỉnh sửa\n Chọn Block public access to buckets and objects granted through new access control lists (ACLs) Chọn Save changes    Điền confirm và chọn Confirm  Hoàn tất chỉnh sửa.  "
+},
+{
+	"uri": "/vi/7-vpcendpoint/",
+	"title": "Hạn chế quyền truy cập vào S3 VPC Endpoint",
+	"tags": [],
+	"description": "",
+	"content": "Hạn chế quyền truy cập vào S3 VPC Endpoint   Truy cập AWS Management Console\n Tìm VPC Chọn VPC     Trong giao diện VPC\n Chọn Enpoints Chọn Create endpoint     Trong giao diện Create endpoint\n Name tag, nhập S3-Endpoint Chọn AWS services     Trong các service, chúng ta tìm S3\n Chọn Type Gateway    Chọn VPC SID-vpc, không chọn Route Table  Chọn Create endpoint   Tạo VPC endpoint thành công\n Ghi chú lại Endpoint ID dùng cho các bước tiếp theo     Truy cập vào S3 bucket\n Chọn sid-security-xxx bucket     Trong giao diện bucket\n Chọn Permissions Chọn Edit Bucket Policy.    Sao chép bucket policy vào Bucket Policy Editor  {\r\u0026#34;Statement\u0026#34;: [\r{\r\u0026#34;Action\u0026#34;: \u0026#34;s3:*\u0026#34;,\r\u0026#34;Effect\u0026#34;: \u0026#34;Deny\u0026#34;,\r\u0026#34;Resource\u0026#34;: \u0026#34;arn:aws:s3:::BUCKET_NAME/*\u0026#34;,\r\u0026#34;Condition\u0026#34;: {\r\u0026#34;StringNotEquals\u0026#34;: {\r\u0026#34;aws:sourceVpce\u0026#34;: \u0026#34;VPC_ENDPOINT_ID\u0026#34;\r}\r},\r\u0026#34;Principal\u0026#34;: \u0026#34;*\u0026#34;\r}\r]\r} - Thay thế **BUCKET NAME** và **VPC ENDPOINT ID** của bạn.  Trở lại giao diện SSH  aws s3api head-object --key app1/file1 --profile user1 --bucket ${bucket}  Quay lại giao diện VPC endpoint\n Chọn S3 endpoint Chọn Actions Chọn Manage route tables     Trong giao diện Manage route tables\n Chọn SID-routes Chọn Modify route tables    Thêm route table thành công  Quay trở lại giao diện SSH  aws s3api head-object --key app1/file1 --profile user1 --bucket ${bucket} "
+},
+{
+	"uri": "/vi/8-awsconfig/",
+	"title": "Sử dụng AWS Config để phát hiện Public Bucket",
+	"tags": [],
+	"description": "",
+	"content": "Sử dụng AWS Config để phát hiện Public Bucket   Truy cập vào AWS Management Console\n Tìm AWS Config Chọn AWS Config     Trong giao diện AWS Config\n Chọn Rules Chọn Add rules     Chọn kiểu rule\n Chọn Add AWS managed rule     Đối với AWS Managed Rules\n Tìm s3-bucket-public-read-prohibited Chọn s3-bucket-public-read-prohibited Chọn Next    Chọn Next  Kiểm tra lại và chọn Add rule   Vậy là đã thêm rule thành công.   Vào giao diện AWS Config và chọn Dashboard\n   Quay lại giao diện S3 bucket\n Chọn sid-security-xxx bucket.    Trong giao diện bucket chọn Permissions  Đối với Access control list (ACL), chọn Edit   Trong giao diện chỉnh sửa ACL\n Đối với Everyone (public access), chọn List và Read    Chọn I understand the effects\u0026hellip;* và chọn Save changes  Bây giờ chúng ta sẽ thấy Permissions ở trạng thái Public (Public Bucket)   Quay lại giao diện Config\n Chọn Rules Chọn s3-bucket-public-read-prohibited Quan sát Resource in scope hiện tại không có.     Cũng trong giao diện đó, chọn Actions\n Chọn Re-evaluate    Quan sát phần Resource in scope đã xuất hiện resource.  "
+},
+{
+	"uri": "/vi/9-accessanalyzer/",
+	"title": "Sử dụng Amazon Access Analyzer cho S3",
+	"tags": [],
+	"description": "",
+	"content": "Sử dụng Amazon Access Analyzer cho S3   Truy cập vào AWS Management Console\n Tìm IAM Chọn IAM     Trong giao diện IAM\n Chọn Access analyzer Chọn Create analyzer     Trong giao diện Create analyzer\n Chọn Create analyzer    Tạo Analyzer thành công.   Trong giao diện Analyzer\n Chọn Active Chọn S3 bucket    Truy cập vào giao diện Access analyzer for S3   Trong giao diện S3\n Chọn Bucket Chọn sid-security-xxx     Trong giao diện bucket\n Chọn Permissions     Đối với Access control list (ACL)\n Chọn Edit     Trong giao diện Edit ACLs\n Bỏ chọn List và Read của Everyone (public access) Chọn Save changes     Quay lại giao diện Access Analyzer của IAM\n Chọn Resolved Tìm S3 Chọn Finding ID đã hiện ra.     Trong giao diện Finding ID\n Xem status đang ở Resolved    "
+},
+{
+	"uri": "/vi/10-cleanup/",
+	"title": "Dọn dẹp tài nguyên",
+	"tags": [],
+	"description": "",
+	"content": "Dọn dẹp tài nguyên Xóa S3 bucket  Truy cập vào giao diện S3 Chọn Bucket liên quan bài lab Chọn Delete bucket (lưu ý phải Empty bucket trước khi xóa) Xác thực bucket cần xóa. Chọn Delete  Xóa CloudFormation Stack  Truy cập vào giao diện CloudFormation Chọn Stack Chọn các stack liên quan đến bài lab. Chọn Delete Xác nhận xóa stack.  "
+},
+{
+	"uri": "/vi/categories/",
+	"title": "Categories",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "/vi/tags/",
+	"title": "Tags",
+	"tags": [],
+	"description": "",
+	"content": ""
+}]
