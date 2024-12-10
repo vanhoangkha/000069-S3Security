@@ -4,6 +4,8 @@
     <title>Sử dụng AWS Config để phát hiện Public Bucket on THỰC HÀNH VỀ BẢO MẬT S3</title>
     <link>/vi/8-awsconfig/</link>
     <description>Recent content in Sử dụng AWS Config để phát hiện Public Bucket on THỰC HÀNH VỀ BẢO MẬT S3</description>
-    <generator>Hugo -- gohugo.io</generator><atom:link href="/vi/8-awsconfig/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo</generator>
+    <language>vi</language>
+    <atom:link href="/vi/8-awsconfig/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

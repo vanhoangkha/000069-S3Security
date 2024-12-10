@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.99.1" />
+    <meta name="generator" content="Hugo 0.133.0">
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>Định cấu hình S3 Block Public Access :: THỰC HÀNH VỀ BẢO MẬT S3</title>
 
     
-    <link href="/css/nucleus.css?1705321770" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1705321770" rel="stylesheet">
-    <link href="/css/hybrid.css?1705321770" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1705321770" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1705321770" rel="stylesheet">
-    <link href="/css/auto-complete.css?1705321770" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1705321770" rel="stylesheet">
-    <link href="/css/theme.css?1705321770" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1705321770" rel="stylesheet">
+    <link href="/css/nucleus.css?1733808793" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1733808793" rel="stylesheet">
+    <link href="/css/hybrid.css?1733808793" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1733808793" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1733808793" rel="stylesheet">
+    <link href="/css/auto-complete.css?1733808793" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1733808793" rel="stylesheet">
+    <link href="/css/theme.css?1733808793" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1733808793" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1705321770" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1733808793" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1705321770"></script>
+    <script src="/js/jquery-3.3.1.min.js?1733808793"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1705321770"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1705321770"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1733808793"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1733808793"></script>
 <script type="text/javascript">
     
-        var baseurl = "\/vi";
+        var baseurl = "\/\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1705321770"></script>
+<script type="text/javascript" src="/js/search.js?1733808793"></script>
 
     
   </div>
@@ -365,7 +365,7 @@
   
     
     <li data-nav-id="/vi/6-s3pba/" title="Định cấu hình S3 Block Public Access" class="dd-item 
-        parent
+        
         active
         
         ">
@@ -577,7 +577,7 @@
     <br>
     <br>
         <b> Last Updated </b> <br>
-        <i><font color=orange>15-01-2024</font></i>
+        <i><font color=orange>10-12-2024</font></i>
     </left>
     <left>
         <br>
@@ -668,7 +668,7 @@
 
 	<h4 id="định-cấu-hình-s3-block-public-access">Định cấu hình S3 Block Public Access</h4>
 <p>Chỉ cần một vài lần chọn trong bảng điều khiển quản lý S3, bạn có thể áp dụng <strong>S3 Block Public Access</strong> cho mọi vùng lưu trữ trong tài khoản của mình – cả vùng lưu trữ hiện có và bất kỳ vùng lưu trữ mới nào được tạo trong tương lai – đồng thời đảm bảo rằng không có quyền truy cập công cộng vào bất kỳ đối tượng nào. Các cài đặt S3 Block Public Access thay thế quyền S3 cho phép truy cập công cộng, giúp quản trị viên tài khoản dễ dàng thiết lập hoạt động kiểm soát tập trung để ngăn chặn sự thay đổi trong cấu hình bảo mật, bất kể cách thêm đối tượng hay cách tạo vùng lưu trữ.</p>
-<p><img src="/images/1-Introduce/0003.png?featherlight=false&amp;width=60pc" alt="Launch CloudFormation Template"></p>
+<p><img alt="Launch CloudFormation Template" src="/images/1-Introduce/0003.png?featherlight=false&width=60pc"></p>
 <h4 id="thực-hành">Thực hành</h4>
 <ol>
 <li>
@@ -678,7 +678,7 @@
 </ul>
 </li>
 </ol>
-<p><img src="/images/6-S3Block/0001.png?featherlight=false&amp;width=90pc" alt="SSE"></p>
+<p><img alt="SSE" src="/images/6-S3Block/0001.png?featherlight=false&width=90pc"></p>
 <ol start="2">
 <li>
 <p>Chọn <strong>Permissions</strong></p>
@@ -687,11 +687,11 @@
 </ul>
 </li>
 </ol>
-<p><img src="/images/6-S3Block/0002.png?featherlight=false&amp;width=90pc" alt="SSE"></p>
+<p><img alt="SSE" src="/images/6-S3Block/0002.png?featherlight=false&width=90pc"></p>
 <ol start="3">
 <li>Thực hiện điền <strong>Delete</strong> và chọn <strong>Delete</strong> để xác nhận xoá.</li>
 </ol>
-<p><img src="/images/6-S3Block/0003.png?featherlight=false&amp;width=90pc" alt="SSE"></p>
+<p><img alt="SSE" src="/images/6-S3Block/0003.png?featherlight=false&width=90pc"></p>
 <ol start="4">
 <li>
 <p>Trong phần <strong>Block public access (bucket settings)</strong></p>
@@ -700,7 +700,7 @@
 </ul>
 </li>
 </ol>
-<p><img src="/images/6-S3Block/0004.png?featherlight=false&amp;width=90pc" alt="SSE"></p>
+<p><img alt="SSE" src="/images/6-S3Block/0004.png?featherlight=false&width=90pc"></p>
 <ol start="5">
 <li>
 <p>Thực hiện chỉnh sửa</p>
@@ -710,27 +710,27 @@
 </ul>
 </li>
 </ol>
-<p><img src="/images/6-S3Block/0005.png?featherlight=false&amp;width=90pc" alt="SSE"></p>
+<p><img alt="SSE" src="/images/6-S3Block/0005.png?featherlight=false&width=90pc"></p>
 <ol start="6">
 <li>Điền <strong>confirm</strong> và sau đó chọn <strong>Confirm</strong></li>
 </ol>
-<p><img src="/images/6-S3Block/0006.png?featherlight=false&amp;width=90pc" alt="SSE"></p>
+<p><img alt="SSE" src="/images/6-S3Block/0006.png?featherlight=false&width=90pc"></p>
 <ol start="7">
 <li>Sau khi thay đổi, chúng ta quan sát thấy <strong>Block all public access</strong> đã <strong>On</strong></li>
 </ol>
-<p><img src="/images/6-S3Block/0007.png?featherlight=false&amp;width=90pc" alt="SSE"></p>
+<p><img alt="SSE" src="/images/6-S3Block/0007.png?featherlight=false&width=90pc"></p>
 <ol start="8">
 <li>Quay lại giao diện <strong>SSH</strong></li>
 </ol>
 <pre tabindex="0"><code>aws s3api put-object --key text01 --body textfile --profile user1 --bucket ${bucket}  
 </code></pre><p>Yêu cầu thành công vì deafult cho một đối tượng ACL là riêng tư.</p>
-<p><img src="/images/6-S3Block/0008.png?featherlight=false&amp;width=90pc" alt="SSE"></p>
+<p><img alt="SSE" src="/images/6-S3Block/0008.png?featherlight=false&width=90pc"></p>
 <ol start="9">
 <li>Tiếp tục chạy lệnh</li>
 </ol>
 <pre tabindex="0"><code>aws s3api put-object --key text01 --body textfile --acl public-read --profile user1 --bucket ${bucket}  
 </code></pre><p>Yêu cầu không thành công vì chính sách nhóm hạn chế ACL đọc công khai.</p>
-<p><img src="/images/6-S3Block/0009.png?featherlight=false&amp;width=90pc" alt="SSE"></p>
+<p><img alt="SSE" src="/images/6-S3Block/0009.png?featherlight=false&width=90pc"></p>
 <ol start="10">
 <li>
 <p>Thực hiện truy cập vào <strong>S3</strong></p>
@@ -740,7 +740,7 @@
 </ul>
 </li>
 </ol>
-<p><img src="/images/6-S3Block/00010.png?featherlight=false&amp;width=90pc" alt="SSE"></p>
+<p><img alt="SSE" src="/images/6-S3Block/00010.png?featherlight=false&width=90pc"></p>
 <ol start="11">
 <li>
 <p>Trong giao diệm <strong>bucket</strong></p>
@@ -750,7 +750,7 @@
 </ul>
 </li>
 </ol>
-<p><img src="/images/6-S3Block/00011.png?featherlight=false&amp;width=90pc" alt="SSE"></p>
+<p><img alt="SSE" src="/images/6-S3Block/00011.png?featherlight=false&width=90pc"></p>
 <ol start="12">
 <li>
 <p>Thực hiện chỉnh sửa</p>
@@ -760,15 +760,15 @@
 </ul>
 </li>
 </ol>
-<p><img src="/images/6-S3Block/00012.png?featherlight=false&amp;width=90pc" alt="SSE"></p>
+<p><img alt="SSE" src="/images/6-S3Block/00012.png?featherlight=false&width=90pc"></p>
 <ol start="13">
 <li>Điền <strong>confirm</strong> và chọn <strong>Confirm</strong></li>
 </ol>
-<p><img src="/images/6-S3Block/00013.png?featherlight=false&amp;width=90pc" alt="SSE"></p>
+<p><img alt="SSE" src="/images/6-S3Block/00013.png?featherlight=false&width=90pc"></p>
 <ol start="14">
 <li>Hoàn tất chỉnh sửa.</li>
 </ol>
-<p><img src="/images/6-S3Block/00014.png?featherlight=false&amp;width=90pc" alt="SSE"></p>
+<p><img alt="SSE" src="/images/6-S3Block/00014.png?featherlight=false&width=90pc"></p>
 
 
 
@@ -1075,19 +1075,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1705321770"></script>
-    <script src="/js/perfect-scrollbar.min.js?1705321770"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1705321770"></script>
-    <script src="/js/jquery.sticky.js?1705321770"></script>
-    <script src="/js/featherlight.min.js?1705321770"></script>
-    <script src="/js/highlight.pack.js?1705321770"></script>
+    <script src="/js/clipboard.min.js?1733808793"></script>
+    <script src="/js/perfect-scrollbar.min.js?1733808793"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1733808793"></script>
+    <script src="/js/jquery.sticky.js?1733808793"></script>
+    <script src="/js/featherlight.min.js?1733808793"></script>
+    <script src="/js/highlight.pack.js?1733808793"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1705321770"></script>
-    <script src="/js/learn.js?1705321770"></script>
-    <script src="/js/hugo-learn.js?1705321770"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1733808793"></script>
+    <script src="/js/learn.js?1733808793"></script>
+    <script src="/js/hugo-learn.js?1733808793"></script>
 
-    <link href="/mermaid/mermaid.css?1705321770" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1705321770"></script>
+    <link href="/mermaid/mermaid.css?1733808793" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1733808793"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

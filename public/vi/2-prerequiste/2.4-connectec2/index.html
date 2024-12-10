@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.99.1" />
+    <meta name="generator" content="Hugo 0.133.0">
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>Kết nối EC2 :: THỰC HÀNH VỀ BẢO MẬT S3</title>
 
     
-    <link href="/css/nucleus.css?1705321770" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1705321770" rel="stylesheet">
-    <link href="/css/hybrid.css?1705321770" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1705321770" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1705321770" rel="stylesheet">
-    <link href="/css/auto-complete.css?1705321770" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1705321770" rel="stylesheet">
-    <link href="/css/theme.css?1705321770" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1705321770" rel="stylesheet">
+    <link href="/css/nucleus.css?1733808793" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1733808793" rel="stylesheet">
+    <link href="/css/hybrid.css?1733808793" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1733808793" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1733808793" rel="stylesheet">
+    <link href="/css/auto-complete.css?1733808793" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1733808793" rel="stylesheet">
+    <link href="/css/theme.css?1733808793" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1733808793" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1705321770" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1733808793" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1705321770"></script>
+    <script src="/js/jquery-3.3.1.min.js?1733808793"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1705321770"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1705321770"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1733808793"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1733808793"></script>
 <script type="text/javascript">
     
-        var baseurl = "\/vi";
+        var baseurl = "\/\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1705321770"></script>
+<script type="text/javascript" src="/js/search.js?1733808793"></script>
 
     
   </div>
@@ -224,7 +224,7 @@
   
     
     <li data-nav-id="/vi/2-prerequiste/2.4-connectec2/" title="Kết nối EC2" class="dd-item 
-        parent
+        
         active
         
         ">
@@ -577,7 +577,7 @@
     <br>
     <br>
         <b> Last Updated </b> <br>
-        <i><font color=orange>15-01-2024</font></i>
+        <i><font color=orange>10-12-2024</font></i>
     </left>
     <left>
         <br>
@@ -682,7 +682,7 @@
 </ul>
 </li>
 </ol>
-<p><img src="/images/2.4-ConnectEC2/0001.png?featherlight=false&amp;width=90pc" alt="Connect EC2"></p>
+<p><img alt="Connect EC2" src="/images/2.4-ConnectEC2/0001.png?featherlight=false&width=90pc"></p>
 <ol start="2">
 <li>
 <p>Trong giao diện <strong>EC2</strong></p>
@@ -692,7 +692,7 @@
 </ul>
 </li>
 </ol>
-<p><img src="/images/2.4-ConnectEC2/0002.png?featherlight=false&amp;width=90pc" alt="Connect EC2"></p>
+<p><img alt="Connect EC2" src="/images/2.4-ConnectEC2/0002.png?featherlight=false&width=90pc"></p>
 <ol start="3">
 <li>
 <p>Trong giao diện <strong>Connect to instance</strong></p>
@@ -702,11 +702,11 @@
 </ul>
 </li>
 </ol>
-<p><img src="/images/2.4-ConnectEC2/0003.png?featherlight=false&amp;width=90pc" alt="Connect EC2"></p>
+<p><img alt="Connect EC2" src="/images/2.4-ConnectEC2/0003.png?featherlight=false&width=90pc"></p>
 <ol start="4">
 <li>Kết nối thành công</li>
 </ol>
-<p><img src="/images/2.4-ConnectEC2/0004.png?featherlight=false&amp;width=90pc" alt="Connect EC2"></p>
+<p><img alt="Connect EC2" src="/images/2.4-ConnectEC2/0004.png?featherlight=false&width=90pc"></p>
 <ol start="5">
 <li>Chạy các lệnh sau để thiết lập AWS CLI.</li>
 </ol>
@@ -714,13 +714,13 @@
 </code></pre><ul>
 <li>Sau đó sử dụng <strong>Access key</strong> và cấu hình.</li>
 </ul>
-<p><img src="/images/2.4-ConnectEC2/0005.png?featherlight=false&amp;width=90pc" alt="Connect EC2"></p>
+<p><img alt="Connect EC2" src="/images/2.4-ConnectEC2/0005.png?featherlight=false&width=90pc"></p>
 <ol start="6">
 <li>Tạo tệp thông tin xác thực để AWS CLI sử dụng bằng lệnh sau. Điều này sẽ cho phép bạn dễ dàng chuyển đổi giữa hai người dùng IAM khác nhau.</li>
 </ol>
 <pre tabindex="0"><code>cd ~/.aws
 vi credentials
-</code></pre><p><img src="/images/2.4-ConnectEC2/0006.png?featherlight=false&amp;width=90pc" alt="Connect EC2"></p>
+</code></pre><p><img alt="Connect EC2" src="/images/2.4-ConnectEC2/0006.png?featherlight=false&width=90pc"></p>
 <ol start="7">
 <li>
 <p>Nhập ivà nhấn enter để chuyển sang chế độ <strong>insert</strong></p>
@@ -729,11 +729,11 @@ vi credentials
 </ul>
 </li>
 </ol>
-<p><img src="/images/2.4-ConnectEC2/0007.png?featherlight=false&amp;width=90pc" alt="Connect EC2"></p>
+<p><img alt="Connect EC2" src="/images/2.4-ConnectEC2/0007.png?featherlight=false&width=90pc"></p>
 <ol start="8">
 <li>Nhấn <strong>es</strong>c** rồi gõ **:wq!**và nhấn <strong>enter</strong> để lưu và thoát khỏi vi .</li>
 </ol>
-<p><img src="/images/2.4-ConnectEC2/0008.png?featherlight=false&amp;width=90pc" alt="Connect EC2"></p>
+<p><img alt="Connect EC2" src="/images/2.4-ConnectEC2/0008.png?featherlight=false&width=90pc"></p>
 <p>Bạn sẽ sử dụng phiên SSH này trong suốt lab này.</p>
 
 
@@ -1045,19 +1045,19 @@ vi credentials
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1705321770"></script>
-    <script src="/js/perfect-scrollbar.min.js?1705321770"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1705321770"></script>
-    <script src="/js/jquery.sticky.js?1705321770"></script>
-    <script src="/js/featherlight.min.js?1705321770"></script>
-    <script src="/js/highlight.pack.js?1705321770"></script>
+    <script src="/js/clipboard.min.js?1733808793"></script>
+    <script src="/js/perfect-scrollbar.min.js?1733808793"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1733808793"></script>
+    <script src="/js/jquery.sticky.js?1733808793"></script>
+    <script src="/js/featherlight.min.js?1733808793"></script>
+    <script src="/js/highlight.pack.js?1733808793"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1705321770"></script>
-    <script src="/js/learn.js?1705321770"></script>
-    <script src="/js/hugo-learn.js?1705321770"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1733808793"></script>
+    <script src="/js/learn.js?1733808793"></script>
+    <script src="/js/hugo-learn.js?1733808793"></script>
 
-    <link href="/mermaid/mermaid.css?1705321770" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1705321770"></script>
+    <link href="/mermaid/mermaid.css?1733808793" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1733808793"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

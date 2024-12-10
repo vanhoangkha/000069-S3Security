@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.99.1" />
+    <meta name="generator" content="Hugo 0.133.0">
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>Require SSE-S3 Encryption :: S3 SECURITY BEST PRACTICES</title>
 
     
-    <link href="/css/nucleus.css?1705321770" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1705321770" rel="stylesheet">
-    <link href="/css/hybrid.css?1705321770" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1705321770" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1705321770" rel="stylesheet">
-    <link href="/css/auto-complete.css?1705321770" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1705321770" rel="stylesheet">
-    <link href="/css/theme.css?1705321770" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1705321770" rel="stylesheet">
+    <link href="/css/nucleus.css?1733808793" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1733808793" rel="stylesheet">
+    <link href="/css/hybrid.css?1733808793" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1733808793" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1733808793" rel="stylesheet">
+    <link href="/css/auto-complete.css?1733808793" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1733808793" rel="stylesheet">
+    <link href="/css/theme.css?1733808793" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1733808793" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1705321770" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1733808793" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1705321770"></script>
+    <script src="/js/jquery-3.3.1.min.js?1733808793"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1705321770"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1705321770"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1733808793"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1733808793"></script>
 <script type="text/javascript">
     
-        var baseurl = "";
+        var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1705321770"></script>
+<script type="text/javascript" src="/js/search.js?1733808793"></script>
 
     
   </div>
@@ -313,7 +313,7 @@
   
     
     <li data-nav-id="/4-requiresse/" title="Require SSE-S3 Encryption" class="dd-item 
-        parent
+        
         active
         
         ">
@@ -577,7 +577,7 @@
     <br>
     <br>
         <b> Last Updated </b> <br>
-        <i><font color=orange>15-01-2024</font></i>
+        <i><font color=orange>10-12-2024</font></i>
     </left>
     <left>
         <br>
@@ -668,7 +668,7 @@
 
 	<h4 id="require-sse-s3-encryption">Require SSE-S3 Encryption</h4>
 <p>Amazon S3 supports both server-side encryption (with 3 key management options: SSE-KMS, SSE-C, SSE-S3) and client-side encryption for data uploads. Amazon S3 provides flexible security features to prevent unauthorized users from accessing your data. You can connect to S3 resources from Amazon Virtual Private Cloud (Amazon VPC) using the VPC endpoint</p>
-<p><img src="/images/1-Introduce/0005.png?featherlight=false&amp;width=20pc" alt="SSE"></p>
+<p><img alt="SSE" src="/images/1-Introduce/0005.png?featherlight=false&width=20pc"></p>
 <p>In this section, we create <strong>S3 Bucket Policy</strong> to require encryption of data at rest.</p>
 <ol>
 <li>
@@ -679,7 +679,7 @@
 </ul>
 </li>
 </ol>
-<p><img src="/images/4-SSE-S3/0001.png?featherlight=false&amp;width=90pc" alt="SSE"></p>
+<p><img alt="SSE" src="/images/4-SSE-S3/0001.png?featherlight=false&width=90pc"></p>
 <ol start="2">
 <li>
 <p>In the <strong>S3</strong> interface</p>
@@ -689,7 +689,7 @@
 </ul>
 </li>
 </ol>
-<p><img src="/images/4-SSE-S3/0002.png?featherlight=false&amp;width=90pc" alt="SSE"></p>
+<p><img alt="SSE" src="/images/4-SSE-S3/0002.png?featherlight=false&width=90pc"></p>
 <ol start="3">
 <li>
 <p>In the <strong>sid-security-xxxxxxx bucket</strong> interface</p>
@@ -703,7 +703,7 @@
 </ul>
 </li>
 </ol>
-<p><img src="/images/4-SSE-S3/0003.png?featherlight=false&amp;width=90pc" alt="SSE"></p>
+<p><img alt="SSE" src="/images/4-SSE-S3/0003.png?featherlight=false&width=90pc"></p>
 <ol start="4">
 <li>Copy <strong>bucket policy</strong> to <strong>Bucket Policy Editor</strong></li>
 </ol>
@@ -722,33 +722,33 @@
         }
     ]
 }
-</code></pre><p><img src="/images/4-SSE-S3/0004.png?featherlight=false&amp;width=90pc" alt="SSE"></p>
+</code></pre><p><img alt="SSE" src="/images/4-SSE-S3/0004.png?featherlight=false&width=90pc"></p>
 <ol start="5">
 <li>Replace <strong>BUCKET_NAME</strong> with the bucket name you copied into your text editor and click <strong>Save changes</strong>.</li>
 </ol>
-<p><img src="/images/4-SSE-S3/0005.png?featherlight=false&amp;width=90pc" alt="SSE"></p>
+<p><img alt="SSE" src="/images/4-SSE-S3/0005.png?featherlight=false&width=90pc"></p>
 <ol start="6">
 <li>Return to the SSH interface. Run command</li>
 </ol>
 <pre tabindex="0"><code>cd ~
 echo &#34;123456789abcdefg&#34; &gt; textfile
-</code></pre><p><img src="/images/4-SSE-S3/0006.png?featherlight=false&amp;width=90pc" alt="SSE"></p>
+</code></pre><p><img alt="SSE" src="/images/4-SSE-S3/0006.png?featherlight=false&width=90pc"></p>
 <ol start="7">
 <li>Execute the command <strong>put an object</strong> into the bucket</li>
 </ol>
 <pre tabindex="0"><code>aws s3api put-object --key text01 --body textfile --profile user1 --bucket ${bucket}
 </code></pre><p>The request will fail because the object is not encrypted.</p>
-<p><img src="/images/4-SSE-S3/0007.png?featherlight=false&amp;width=90pc" alt="SSE"></p>
+<p><img alt="SSE" src="/images/4-SSE-S3/0007.png?featherlight=false&width=90pc"></p>
 <ol start="8">
 <li>Continue running put object using SSE-S3 encoding</li>
 </ol>
 <pre tabindex="0"><code>aws s3api put-object --key text01 --body textfile --server-side-encryption AES256 --profile user1 --bucket ${bucket}
 </code></pre><p>The command was successful because the PUT used SSE-S3.</p>
-<p><img src="/images/4-SSE-S3/0008.png?featherlight=false&amp;width=90pc" alt="SSE"></p>
+<p><img alt="SSE" src="/images/4-SSE-S3/0008.png?featherlight=false&width=90pc"></p>
 <ol start="9">
 <li>Check S3 has 1 file <strong>text01</strong></li>
 </ol>
-<p><img src="/images/4-SSE-S3/0009.png?featherlight=false&amp;width=90pc" alt="SSE"></p>
+<p><img alt="SSE" src="/images/4-SSE-S3/0009.png?featherlight=false&width=90pc"></p>
 
 
 
@@ -1055,19 +1055,19 @@ echo &#34;123456789abcdefg&#34; &gt; textfile
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1705321770"></script>
-    <script src="/js/perfect-scrollbar.min.js?1705321770"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1705321770"></script>
-    <script src="/js/jquery.sticky.js?1705321770"></script>
-    <script src="/js/featherlight.min.js?1705321770"></script>
-    <script src="/js/highlight.pack.js?1705321770"></script>
+    <script src="/js/clipboard.min.js?1733808793"></script>
+    <script src="/js/perfect-scrollbar.min.js?1733808793"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1733808793"></script>
+    <script src="/js/jquery.sticky.js?1733808793"></script>
+    <script src="/js/featherlight.min.js?1733808793"></script>
+    <script src="/js/highlight.pack.js?1733808793"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1705321770"></script>
-    <script src="/js/learn.js?1705321770"></script>
-    <script src="/js/hugo-learn.js?1705321770"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1733808793"></script>
+    <script src="/js/learn.js?1733808793"></script>
+    <script src="/js/hugo-learn.js?1733808793"></script>
 
-    <link href="/mermaid/mermaid.css?1705321770" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1705321770"></script>
+    <link href="/mermaid/mermaid.css?1733808793" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1733808793"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
