@@ -1,4 +1,4 @@
-# 🔒 S3 Security
+# S3 Security
 
 Secure Amazon S3 buckets with encryption, policies, and access controls.
 
@@ -8,7 +8,7 @@ This is a hands-on workshop from the **AWS First Cloud Journey** series.
 
 ## Workshop
 
-📖 **[Start the workshop](https://vanhoangkha.github.io/000069-S3Security/)**
+**[Start the workshop](https://vanhoangkha.github.io/000069-S3Security/)**
 
 ## Prerequisites
 
